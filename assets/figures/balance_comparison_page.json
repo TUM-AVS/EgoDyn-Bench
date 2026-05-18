@@ -1,0 +1,92 @@
+{
+  "questions": [
+    {
+      "id": "brake_then_turn",
+      "label": "Brake\u2192Turn"
+    },
+    {
+      "id": "braking_intensity",
+      "label": "Braking Intensity"
+    },
+    {
+      "id": "contrastive_sequence",
+      "label": "Contrastive Sequence"
+    },
+    {
+      "id": "dominant_motion_axis",
+      "label": "Dominant Axis"
+    },
+    {
+      "id": "driving_smoothness",
+      "label": "Driving Smoothness"
+    },
+    {
+      "id": "extreme_maneuver",
+      "label": "Extreme Maneuver"
+    },
+    {
+      "id": "high_lateral_accel",
+      "label": "High Lat. Accel."
+    },
+    {
+      "id": "mean_speed_low",
+      "label": "mean speed low"
+    },
+    {
+      "id": "significant_heading_change",
+      "label": "significant heading change"
+    },
+    {
+      "id": "speed_peak_half",
+      "label": "speed peak half"
+    },
+    {
+      "id": "speed_regime",
+      "label": "speed regime"
+    },
+    {
+      "id": "speed_trend",
+      "label": "Speed Trend"
+    },
+    {
+      "id": "stop_and_go",
+      "label": "stop and go"
+    },
+    {
+      "id": "yaw_rate_turn_direction",
+      "label": "Turn Direction"
+    }
+  ],
+  "nuScenesOnly": [
+    0.5574,
+    0.964,
+    0.9956,
+    0.7603,
+    0.9523,
+    0.579,
+    0.5236,
+    0.795,
+    0.9358,
+    0.8705,
+    0.8771,
+    0.9026,
+    0.9933,
+    0.9907
+  ],
+  "augmentedMix": [
+    0.9286,
+    0.956,
+    1.0,
+    0.9372,
+    0.9838,
+    0.9044,
+    0.9483,
+    0.9936,
+    0.9936,
+    0.9931,
+    0.9806,
+    1.0,
+    0.9044,
+    0.9998
+  ]
+}

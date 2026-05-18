@@ -1,0 +1,468 @@
+{
+  "models": [
+    {
+      "name": "Gemini 3 Pro",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#0065bd",
+      "globalF1": 0.4433,
+      "temporalF1": 0.4519
+    },
+    {
+      "name": "GPT-5.1",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#e37222",
+      "globalF1": 0.4007,
+      "temporalF1": 0.3871
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#a2ad00",
+      "globalF1": 0.3289,
+      "temporalF1": 0.3495
+    },
+    {
+      "name": "Gemini 2.0 Flash",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#64a0c8",
+      "globalF1": 0.3238,
+      "temporalF1": 0.3506
+    },
+    {
+      "name": "Qwen3-VL 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#8F81EA",
+      "globalF1": 0.3301,
+      "temporalF1": 0.3267
+    },
+    {
+      "name": "Qwen3-VL 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#3070B3",
+      "globalF1": 0.3445,
+      "temporalF1": 0.3506
+    },
+    {
+      "name": "InternVL3.5 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#EA7237",
+      "globalF1": 0.2548,
+      "temporalF1": 0.2871
+    },
+    {
+      "name": "InternVL3 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#999999",
+      "globalF1": 0.2036,
+      "temporalF1": 0.2637
+    },
+    {
+      "name": "Cosmos- Reason2-8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#005293",
+      "globalF1": 0.3583,
+      "temporalF1": 0.3673
+    },
+    {
+      "name": "Gemini 3 Pro + Traj.",
+      "type": "Closed",
+      "input": "Vision + Trajectory",
+      "color": "#0065bd",
+      "globalF1": 0.6771,
+      "temporalF1": 0.7
+    },
+    {
+      "name": "Claude Sonnet 4.5 + Traj.",
+      "type": "Closed",
+      "input": "Vision + Trajectory",
+      "color": "#a2ad00",
+      "globalF1": 0.611,
+      "temporalF1": 0.5808
+    },
+    {
+      "name": "Gemini 2.0 Flash + Traj.",
+      "type": "Closed",
+      "input": "Vision + Trajectory",
+      "color": "#64a0c8",
+      "globalF1": 0.5258,
+      "temporalF1": 0.5712
+    },
+    {
+      "name": "GPT-5.1 + Traj.",
+      "type": "Closed",
+      "input": "Vision + Trajectory",
+      "color": "#e37222",
+      "globalF1": 0.6425,
+      "temporalF1": 0.4914
+    },
+    {
+      "name": "Drive Mm",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "globalF1": 0.3196,
+      "temporalF1": 0.3129
+    },
+    {
+      "name": "Internvl35 W Traj Summary",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#59a14f",
+      "globalF1": 0.4921,
+      "temporalF1": 0.3762
+    },
+    {
+      "name": "Internvl3 5 8B Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "globalF1": 0.4066,
+      "temporalF1": 0.543
+    },
+    {
+      "name": "Internvl3 5 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.5589,
+      "temporalF1": 0.6517
+    },
+    {
+      "name": "Internvl3 5 Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "globalF1": 0.4066,
+      "temporalF1": 0.543
+    },
+    {
+      "name": "Internvl3 5 W Trajectory Full",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#f28e2b",
+      "globalF1": 0.5531,
+      "temporalF1": 0.6908
+    },
+    {
+      "name": "Qwen 3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.3413,
+      "temporalF1": 0.3436
+    },
+    {
+      "name": "Cam Reasoner",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "globalF1": 0.274,
+      "temporalF1": 0.2856
+    },
+    {
+      "name": "Claude Sonnet Answers W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#edc948",
+      "globalF1": 0.611,
+      "temporalF1": 0.5808
+    },
+    {
+      "name": "Cosmos Reason2 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.2357,
+      "temporalF1": 0.258
+    },
+    {
+      "name": "Cosmos Reason2 8B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#59a14f",
+      "globalF1": 0.5403,
+      "temporalF1": 0.5108
+    },
+    {
+      "name": "Drivemm",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "globalF1": 0.3196,
+      "temporalF1": 0.3129
+    },
+    {
+      "name": "Flow Heuristic Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#6A757E",
+      "globalF1": 0.3968,
+      "temporalF1": 0.4256
+    },
+    {
+      "name": "Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.3968,
+      "temporalF1": 0.4256
+    },
+    {
+      "name": "Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "globalF1": 0.4225,
+      "temporalF1": 0.4387
+    },
+    {
+      "name": "Impromptu Vla 7B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "globalF1": 0.2887,
+      "temporalF1": 0.2925
+    },
+    {
+      "name": "Impromptu Vla 7B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#59a14f",
+      "globalF1": 0.4556,
+      "temporalF1": 0.3982
+    },
+    {
+      "name": "Intervl35 38B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "globalF1": 0.2676,
+      "temporalF1": 0.2696
+    },
+    {
+      "name": "Internvl35 W Traj Summary",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#59a14f",
+      "globalF1": 0.4921,
+      "temporalF1": 0.3762
+    },
+    {
+      "name": "Internvl35 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "globalF1": 0.3002,
+      "temporalF1": 0.3348
+    },
+    {
+      "name": "Internvl35 8B No Images W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#4e79a7",
+      "globalF1": 0.4935,
+      "temporalF1": 0.4536
+    },
+    {
+      "name": "Internvl35 8B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#e15759",
+      "globalF1": 0.492,
+      "temporalF1": 0.3768
+    },
+    {
+      "name": "Internvl35 No Images 8B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#b07aa1",
+      "globalF1": 0.4935,
+      "temporalF1": 0.4536
+    },
+    {
+      "name": "Internvl3 5 38B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "globalF1": 0.2676,
+      "temporalF1": 0.2696
+    },
+    {
+      "name": "Internvl3 8B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#76b7b2",
+      "globalF1": 0.3338,
+      "temporalF1": 0.3215
+    },
+    {
+      "name": "Qwen3-Vl-8B-Full-Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.6035,
+      "temporalF1": 0.784
+    },
+    {
+      "name": "Qwen3 8B Text Only",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "globalF1": 0.1933,
+      "temporalF1": 0.2018
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "globalF1": 0.619,
+      "temporalF1": 0.7788
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries Answer",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.619,
+      "temporalF1": 0.7788
+    },
+    {
+      "name": "Qwen3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "globalF1": 0.3413,
+      "temporalF1": 0.3436
+    },
+    {
+      "name": "Qwen3Vl 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "globalF1": 0.3116,
+      "temporalF1": 0.3747
+    },
+    {
+      "name": "Qwen3Vl 8B 10Fps",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "globalF1": 0.32,
+      "temporalF1": 0.3223
+    },
+    {
+      "name": "Qwen3Vl 8B 1 Frame",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.2998,
+      "temporalF1": 0.3163
+    },
+    {
+      "name": "Qwen3Vl 8B Coordinates",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "globalF1": 0.43,
+      "temporalF1": 0.4891
+    },
+    {
+      "name": "Qwen3Vl 8B Shuffled",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.3168,
+      "temporalF1": 0.3005
+    },
+    {
+      "name": "Qwen3Vl 8B Text Only W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#76b7b2",
+      "globalF1": 0.5411,
+      "temporalF1": 0.463
+    },
+    {
+      "name": "Qwen3Vl 8B W Traj",
+      "type": "Open",
+      "input": "Vision + Trajectory",
+      "color": "#ff9da7",
+      "globalF1": 0.527,
+      "temporalF1": 0.4112
+    },
+    {
+      "name": "Qwen3Vl Coordinates 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.43,
+      "temporalF1": 0.4891
+    },
+    {
+      "name": "Raft Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "globalF1": 0.6024,
+      "temporalF1": 0.5189
+    },
+    {
+      "name": "Raft Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.5684,
+      "temporalF1": 0.4817
+    },
+    {
+      "name": "Tartanvo Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "globalF1": 0.4623,
+      "temporalF1": 0.6286
+    },
+    {
+      "name": "Tartanvo Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "globalF1": 0.5071,
+      "temporalF1": 0.6433
+    },
+    {
+      "name": "Vo Proxy Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "globalF1": 0.626,
+      "temporalF1": 0.6188
+    },
+    {
+      "name": "Vo Proxy Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#ff9da7",
+      "globalF1": 0.6299,
+      "temporalF1": 0.6107
+    },
+    {
+      "name": "Visual Odometry Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#dad7cb",
+      "globalF1": 0.626,
+      "temporalF1": 0.6188
+    }
+  ]
+}

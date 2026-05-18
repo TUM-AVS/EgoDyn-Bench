@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+output/
+results/
+results_backup/
+.env
+.vscode
+assets/*.pdf
+assets/tikz_data
+generated/
+project-page
+models/

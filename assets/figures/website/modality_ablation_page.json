@@ -1,0 +1,41 @@
+{
+  "model": "Qwen3-VL-8B",
+  "conditions": [
+    {
+      "name": "No Vision",
+      "key": "qwen3_8B_text_only",
+      "balancedAcc": 0.335,
+      "macroF1": 0.1933
+    },
+    {
+      "name": "Static Frame",
+      "key": "qwen3vl_8b_1_frame",
+      "balancedAcc": 0.3696,
+      "macroF1": 0.2998
+    },
+    {
+      "name": "Shuffled Frames",
+      "key": "qwen3vl_8b_shuffled",
+      "balancedAcc": 0.3901,
+      "macroF1": 0.3168
+    },
+    {
+      "name": "Temporal Frames",
+      "key": "qwen3vl_8b",
+      "balancedAcc": 0.3886,
+      "macroF1": 0.3301
+    },
+    {
+      "name": "Vision + Trajectory Text",
+      "key": "qwen3vl_8b_w_traj",
+      "balancedAcc": 0.5469,
+      "macroF1": 0.527
+    },
+    {
+      "name": "Text-Only + Trajectory",
+      "key": "qwen3vl_8b_text_only_w_traj",
+      "balancedAcc": 0.5962,
+      "macroF1": 0.5411
+    }
+  ]
+}

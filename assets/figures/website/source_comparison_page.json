@@ -1,0 +1,324 @@
+{
+  "models": [
+    {
+      "name": "Gemini 3 Pro",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#0065bd",
+      "nuScenesF1": 0.4365,
+      "carlaF1": 0.4287
+    },
+    {
+      "name": "GPT-5.1",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#e37222",
+      "nuScenesF1": 0.4033,
+      "carlaF1": 0.3851
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#a2ad00",
+      "nuScenesF1": 0.3279,
+      "carlaF1": 0.3255
+    },
+    {
+      "name": "Gemini 2.0 Flash",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#64a0c8",
+      "nuScenesF1": 0.3487,
+      "carlaF1": 0.305
+    },
+    {
+      "name": "Qwen3-VL 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#8F81EA",
+      "nuScenesF1": 0.3208,
+      "carlaF1": 0.3409
+    },
+    {
+      "name": "Qwen3-VL 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#3070B3",
+      "nuScenesF1": 0.3109,
+      "carlaF1": 0.3502
+    },
+    {
+      "name": "InternVL3.5 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#EA7237",
+      "nuScenesF1": 0.2494,
+      "carlaF1": 0.2472
+    },
+    {
+      "name": "InternVL3 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#999999",
+      "nuScenesF1": 0.1987,
+      "carlaF1": 0.2021
+    },
+    {
+      "name": "Cosmos- Reason2-8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#005293",
+      "nuScenesF1": 0.3578,
+      "carlaF1": 0.3658
+    },
+    {
+      "name": "Internvl3 5 8B Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "nuScenesF1": 0.3902,
+      "carlaF1": 0.424
+    },
+    {
+      "name": "Internvl3 5 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.523,
+      "carlaF1": 0.5432
+    },
+    {
+      "name": "Internvl3 5 Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "nuScenesF1": 0.3902,
+      "carlaF1": 0.424
+    },
+    {
+      "name": "Qwen 3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.3208,
+      "carlaF1": 0.3557
+    },
+    {
+      "name": "Cam Reasoner",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "nuScenesF1": 0.2551,
+      "carlaF1": 0.265
+    },
+    {
+      "name": "Cosmos Reason2 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.2449,
+      "carlaF1": 0.2311
+    },
+    {
+      "name": "Drivemm",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "nuScenesF1": 0.3479,
+      "carlaF1": 0.2652
+    },
+    {
+      "name": "Flow Heuristic Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#6A757E",
+      "nuScenesF1": 0.484,
+      "carlaF1": 0.2596
+    },
+    {
+      "name": "Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.484,
+      "carlaF1": 0.2596
+    },
+    {
+      "name": "Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "nuScenesF1": 0.484,
+      "carlaF1": 0.3398
+    },
+    {
+      "name": "Impromptu Vla 7B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "nuScenesF1": 0.3012,
+      "carlaF1": 0.2621
+    },
+    {
+      "name": "Internvl35 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "nuScenesF1": 0.2522,
+      "carlaF1": 0.3227
+    },
+    {
+      "name": "Internvl3 5 38B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "nuScenesF1": 0.2745,
+      "carlaF1": 0.2475
+    },
+    {
+      "name": "Qwen3-Vl-8B-Full-Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.5672,
+      "carlaF1": 0.6188
+    },
+    {
+      "name": "Qwen3 8B Text Only",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "nuScenesF1": 0.2028,
+      "carlaF1": 0.1867
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "nuScenesF1": 0.5808,
+      "carlaF1": 0.644
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries Answer",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.5808,
+      "carlaF1": 0.644
+    },
+    {
+      "name": "Qwen3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "nuScenesF1": 0.3208,
+      "carlaF1": 0.3557
+    },
+    {
+      "name": "Qwen3Vl 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "nuScenesF1": 0.2553,
+      "carlaF1": 0.3271
+    },
+    {
+      "name": "Qwen3Vl 8B 10Fps",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "nuScenesF1": 0.2909,
+      "carlaF1": 0.3423
+    },
+    {
+      "name": "Qwen3Vl 8B 1 Frame",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.2887,
+      "carlaF1": 0.3021
+    },
+    {
+      "name": "Qwen3Vl 8B Coordinates",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "nuScenesF1": 0.4448,
+      "carlaF1": 0.4158
+    },
+    {
+      "name": "Qwen3Vl 8B Shuffled",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.3003,
+      "carlaF1": 0.3343
+    },
+    {
+      "name": "Qwen3Vl Coordinates 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.4448,
+      "carlaF1": 0.4158
+    },
+    {
+      "name": "Raft Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "nuScenesF1": 0.645,
+      "carlaF1": 0.5345
+    },
+    {
+      "name": "Raft Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.645,
+      "carlaF1": 0.4759
+    },
+    {
+      "name": "Tartanvo Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "nuScenesF1": 0.4908,
+      "carlaF1": 0.4179
+    },
+    {
+      "name": "Tartanvo Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "nuScenesF1": 0.4908,
+      "carlaF1": 0.4926
+    },
+    {
+      "name": "Vo Proxy Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "nuScenesF1": 0.6248,
+      "carlaF1": 0.6001
+    },
+    {
+      "name": "Vo Proxy Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#ff9da7",
+      "nuScenesF1": 0.6248,
+      "carlaF1": 0.6098
+    },
+    {
+      "name": "Visual Odometry Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#dad7cb",
+      "nuScenesF1": 0.6248,
+      "carlaF1": 0.6001
+    }
+  ]
+}

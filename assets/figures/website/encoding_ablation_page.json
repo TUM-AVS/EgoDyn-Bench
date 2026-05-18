@@ -1,0 +1,42 @@
+{
+  "encodings": [
+    "Summary",
+    "Timeseries",
+    "Coordinates",
+    "Full"
+  ],
+  "models": [
+    {
+      "name": "Qwen3-VL-8B",
+      "color": "#8F81EA",
+      "balancedAcc": [
+        0.5469,
+        0.6222,
+        0.466,
+        0.6129
+      ],
+      "macroF1": [
+        0.527,
+        0.619,
+        0.43,
+        0.6035
+      ]
+    },
+    {
+      "name": "InternVL3.5-8B",
+      "color": "#0065bd",
+      "balancedAcc": [
+        0.5377,
+        0.5738,
+        0.4572,
+        0.5756
+      ],
+      "macroF1": [
+        0.492,
+        0.5589,
+        0.4066,
+        0.5531
+      ]
+    }
+  ]
+}

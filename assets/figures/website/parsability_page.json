@@ -1,0 +1,298 @@
+{
+  "models": [
+    {
+      "name": "Gemini 3 Pro",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#0065bd",
+      "parsableCoverage": 0.9434
+    },
+    {
+      "name": "GPT-5.1",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#e37222",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#a2ad00",
+      "parsableCoverage": 0.9973
+    },
+    {
+      "name": "Gemini 2.0 Flash",
+      "type": "Closed",
+      "input": "Vision",
+      "color": "#64a0c8",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3-VL 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#8F81EA",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3-VL 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#3070B3",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "InternVL3.5 4B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#EA7237",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "InternVL3 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#999999",
+      "parsableCoverage": 0.9986
+    },
+    {
+      "name": "Cosmos- Reason2-8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#005293",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Drive Mm",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "parsableCoverage": 0.9939
+    },
+    {
+      "name": "Internvl3 5 8B Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "parsableCoverage": 0.9631
+    },
+    {
+      "name": "Internvl3 5 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 0.9735
+    },
+    {
+      "name": "Internvl3 5 Coordinates Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "parsableCoverage": 0.9631
+    },
+    {
+      "name": "Qwen 3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Cam Reasoner",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "parsableCoverage": 0.9115
+    },
+    {
+      "name": "Cosmos Reason2 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Drivemm",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "parsableCoverage": 0.9939
+    },
+    {
+      "name": "Flow Heuristic Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#6A757E",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Impromptu Vla 7B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "parsableCoverage": 0.9999
+    },
+    {
+      "name": "Intervl35 38B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Internvl35 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#b07aa1",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Internvl3 5 38B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3-Vl-8B-Full-Trajectory",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3 8B Text Only",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3 Vl 8B Timeseries Answer",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3 Vl 8B Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#76b7b2",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3Vl 2B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "parsableCoverage": 0.9999
+    },
+    {
+      "name": "Qwen3Vl 8B 10Fps",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#e15759",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3Vl 8B 1 Frame",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3Vl 8B Coordinates",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#59a14f",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3Vl 8B Shuffled",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Qwen3Vl Coordinates 8B",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Raft Flow Heuristic Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Raft Flow Heuristic Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Tartanvo Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#4e79a7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Tartanvo Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#f28e2b",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Vo Proxy Simulation",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#edc948",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Vo Proxy Transferred",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#ff9da7",
+      "parsableCoverage": 1.0
+    },
+    {
+      "name": "Visual Odometry Baseline",
+      "type": "Open",
+      "input": "Vision",
+      "color": "#dad7cb",
+      "parsableCoverage": 1.0
+    }
+  ]
+}

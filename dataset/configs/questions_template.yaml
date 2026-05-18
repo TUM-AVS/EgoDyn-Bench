@@ -1,0 +1,408 @@
+# Question Template Configuration
+# This file defines question templates and labeling rules for QA generation.
+#
+# IMPORTANT: This is a TEMPLATE with placeholder parameters.
+# Researchers should edit thresholds and parameters based on their requirements.
+
+version: "1.0"
+dataset: "dynamic-trajectory-understanding"
+
+# Global defaults
+defaults:
+  label_source: "sensor_rule"
+  difficulty: "medium"
+  include_evidence: true
+
+# Question templates
+# Each question defines:
+# - question_id: Unique identifier
+# - category: Question category (direct_dynamics, comparative, feasibility)
+# - question_text: Question text (supports {param} substitution)
+# - answer_type: binary, multiclass, or numeric
+# - choices: Valid answer choices (for multiclass)
+# - units: Physical units (for numeric answers)
+# - rule: Labeling rule specification
+#   - name: Rule function name
+#   - params: Rule-specific parameters (EDIT THESE!)
+# - metadata: Optional metadata (difficulty, required_features, etc.)
+
+questions:
+  # ===========================================================================
+  # Turn Direction (Yaw Rate Sign)
+  # ===========================================================================
+  - question_id: "yaw_rate_turn_direction"
+    category: "direct_dynamics"
+    question_text: "Is the vehicle turning left, right, or going straight?"
+    answer_type: "multiclass"
+    choices: ["left", "right", "straight"]
+    units: null
+
+    rule:
+      name: "yaw_rate_sign_with_deadzone"
+      params:
+        # SOURCE: Vehicle dynamics sensor noise floor.
+        # Typical steering noise/drift on straight roads is ~0.02 rad/s (~1 deg/s).
+        # 0.04 rad/s (~2.3 deg/s) filters noise while capturing intentional turns.
+        threshold_positive: 0.04  # rad/s
+        threshold_negative: -0.04  # rad/s
+        aggregation: "abs_max"
+
+    metadata:
+      difficulty: "easy"
+      required_features: ["yaw_rate"]
+      description: "Tests understanding of yaw rate sign convention"
+
+  # ===========================================================================
+  # Braking Intensity Classification
+  # ===========================================================================
+  - question_id: "braking_intensity"
+    category: "direct_dynamics"
+    question_text: "What is the intensity level of the vehicle's braking?"
+    answer_type: "multiclass"
+    choices: ["emergency", "moderate", "low", "none"]
+    units: null
+
+    rule:
+      name: "multi_threshold_classification"
+      params:
+        feature: "accel"
+        aggregation: "min"  # most negative = strongest braking
+        # Calibrated on data pool (N=41,999) targeting ~25% per class.
+        # Thresholds in ascending order (m/s²):
+        #   < -1.59 → emergency  (strong braking, ~P25)
+        #   -1.59 to -0.89 → moderate  (~P25–P50)
+        #   -0.89 to -0.18 → low  (~P50–P75)
+        #   > -0.18 → none  (negligible, ~P75–P100)
+        thresholds: [-1.59, -0.89, -0.18]
+        labels: ["emergency", "moderate", "low", "none"]
+
+    metadata:
+      difficulty: "easy"
+      required_features: ["accel"]
+      description: "Tests classification of braking intensity into severity levels"
+
+# ===========================================================================
+# Speed Regime Classification
+# ===========================================================================
+  - question_id: "speed_regime"
+    category: "direct_dynamics"
+    question_text: "What is the vehicle's speed regime?"
+    answer_type: "multiclass"
+    choices: ["stopped", "slow", "urban", "highway"]
+    units: null
+
+    rule:
+      name: "multi_threshold_classification"
+      params:
+        feature: "max_speed"
+        aggregation: "max"
+        thresholds: [0.5, 5.0, 13.9]  # m/s
+        labels: ["stopped", "slow", "urban", "highway"]
+
+    metadata:
+      difficulty: "easy"
+      required_features: ["max_speed"]
+      description: "Tests semantic understanding of speed regimes"
+
+
+  # ===========================================================================
+  # Driving Smoothness (Jerk)
+  # ===========================================================================
+  - question_id: "driving_smoothness"
+    category: "direct_dynamics"
+    question_text: "How smooth is the driving based on jerk?"
+    answer_type: "multiclass"
+    choices: ["smooth", "moderate", "aggressive"]
+    units: null
+
+    rule:
+      name: "multi_threshold_classification"
+      params:
+        feature: "mean_abs_jerk"
+        aggregation: "mean"  # unused for clip_features lookup, but required by rule
+        # Calibrated on data pool (N=41,999) targeting ~33% per class.
+        # Thresholds on mean |jerk| (m/s³):
+        #   <= 1.25 → smooth  (comfortable ride, ~P33)
+        #   1.25 to 2.15 → moderate  (noticeable but acceptable, ~P33–P67)
+        #   > 2.15 → aggressive  (harsh ride quality, ~P67–P100)
+        thresholds: [1.25, 2.15]
+        labels: ["smooth", "moderate", "aggressive"]
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["mean_abs_jerk"]
+      description: "Tests understanding of jerk as comfort metric (3-level)"
+
+  # ===========================================================================
+  # Speed Trend (Accelerating/Decelerating/Steady)
+  # ===========================================================================
+  - question_id: "speed_trend"
+    category: "direct_dynamics"
+    question_text: "Is the vehicle accelerating, decelerating, or maintaining steady speed?"
+    answer_type: "multiclass"
+    choices: ["accelerating", "decelerating", "steady"]
+    units: null
+
+    rule:
+      name: "trend_classification"
+      params:
+        feature: "accel"
+        # SOURCE: ISO 15622 (Adaptive Cruise Control).
+        # ACC steady-state control error is typically within +/-0.2-0.3 m/s².
+        # Values outside this band imply intentional speed change.
+        threshold_positive: 0.25  # m/s²
+        threshold_negative: -0.25  # m/s²
+        aggregation: "mean"
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["accel"]
+      temporal: true
+      description: "Tests understanding of acceleration trends"
+
+  # ===========================================================================
+  # Mean Speed Range Check
+  # ===========================================================================
+  - question_id: "mean_speed_low"
+    category: "direct_dynamics"
+    question_text: "Is the mean speed below 5 m/s (18 km/h)?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "threshold_classification"
+      params:
+        feature: "mean_speed"
+        threshold: 5.0  # m/s - PLACEHOLDER: adjust based on desired cutoff
+        below_label: "yes"
+        above_label: "no"
+
+    metadata:
+      difficulty: "easy"
+      required_features: ["mean_speed"]
+      description: "Tests understanding of average speed"
+
+  # ===========================================================================
+  # Heading Change Detection
+  # ===========================================================================
+  - question_id: "significant_heading_change"
+    category: "direct_dynamics"
+    question_text: "Does the vehicle change heading by more than 15 degrees?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "threshold_classification"
+      params:
+        feature: "total_heading_change"
+        threshold: 0.2618  # radians (~15 degrees) - PLACEHOLDER: adjust threshold
+        below_label: "no"
+        above_label: "yes"
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["total_heading_change"]
+      description: "Tests understanding of cumulative heading change"
+
+  # ===========================================================================
+  # Extreme Maneuver Detection (Combined)
+  # ===========================================================================
+  - question_id: "extreme_maneuver"
+    category: "direct_dynamics"
+    question_text: "Does the vehicle perform an extreme maneuver (high jerk or hard braking)?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "or_threshold_event"
+      params:
+        conditions:
+          - feature: "max_abs_jerk"
+            threshold: 20.0   # m/s³ – 0.2g change per 0.1s sample
+            operator: "greater_than"
+            aggregation: "max"
+          - feature: "accel"
+            threshold: -3.924  # m/s² – same as emergency braking (0.4g)
+            operator: "less_than"
+            aggregation: "min"
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["max_abs_jerk", "accel"]
+      description: "Tests detection of extreme maneuvers via high jerk OR hard braking"
+
+  # ===========================================================================
+  # Dominant Motion Axis (Longitudinal vs Lateral)
+  # ===========================================================================
+  - question_id: "dominant_motion_axis"
+    category: "direct_dynamics"
+    question_text: "Is the vehicle's motion primarily longitudinal (speeding up/slowing down) or lateral (turning)?"
+    answer_type: "multiclass"
+    choices: ["longitudinal", "lateral", "none"]
+    units: null
+
+    rule:
+      name: "dominant_axis_comparison"
+      params:
+        longitudinal_feature: "accel"        # longitudinal acceleration array
+        lateral_method: "speed_times_yaw"    # a_lat = speed * yaw_rate
+        aggregation: "rms"                   # root-mean-square over clip
+        ratio_threshold: 1.0  # PLACEHOLDER: lateral_rms / longitudinal_rms > threshold → lateral
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["accel", "speed", "yaw_rate"]
+      description: "Tests understanding of longitudinal vs lateral dynamics"
+
+  # ===========================================================================
+  # High Lateral Acceleration Detection
+  # ===========================================================================
+  - question_id: "high_lateral_accel"
+    category: "direct_dynamics"
+    question_text: "Does the vehicle experience high lateral acceleration?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "lateral_accel_threshold"
+      params:
+        # SOURCE: AASHTO "A Policy on Geometric Design of Highways and Streets"
+        # (Green Book). Comfortable side friction factor f ~ 0.15-0.20 for urban
+        # speeds, corresponding to ~0.2g (~2.0 m/s²) as the upper comfort limit.
+        # Beyond this, unsecured objects slide and passengers brace.
+        threshold: 2.0  # m/s²
+        aggregation: "max"  # peak lateral accel over clip
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["speed", "yaw_rate"]
+      description: "Tests detection of high lateral acceleration (a_lat = speed * yaw_rate)"
+
+  # ===========================================================================
+  # Brake-Then-Turn Sequential Maneuver
+  # ===========================================================================
+  - question_id: "brake_then_turn"
+    category: "direct_dynamics"
+    question_text: "Does the vehicle brake and then turn (sequential maneuver)?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "sequential_event"
+      params:
+        first_event:
+          feature: "accel"
+          operator: "less_than"
+          threshold: -1.5  # m/s² - PLACEHOLDER: braking threshold
+        second_event:
+          feature: "yaw_rate"
+          operator: "abs_greater_than"
+          threshold: 0.1  # rad/s - PLACEHOLDER: turning threshold
+        min_gap_seconds: 0.0  # s - PLACEHOLDER: min time between events (0 = overlap OK)
+        max_gap_seconds: 2.0  # s - PLACEHOLDER: max time between events
+
+    metadata:
+      difficulty: "hard"
+      required_features: ["accel", "yaw_rate"]
+      temporal: true
+      description: "Tests detection of sequential brake-then-turn maneuvers"
+
+  # ===========================================================================
+  # Speed Peak Half (Temporal Localization)
+  # ===========================================================================
+  - question_id: "speed_peak_half"
+    category: "comparative"
+    question_text: "Does the maximum speed occur in the first or second half of the sequence?"
+    answer_type: "multiclass"
+    choices: ["first_half", "second_half", "no_peak"]
+    units: null
+
+    rule:
+      name: "peak_half_detection"
+      params:
+        feature: "speed"
+
+    metadata:
+      difficulty: "medium"
+      required_features: ["speed"]
+      temporal: true
+      description: "Tests temporal localization of peak speed within the clip"
+
+  # ===========================================================================
+  # Stop-and-Go Detection
+  # ===========================================================================
+  - question_id: "stop_and_go"
+    category: "direct_dynamics"
+    question_text: "Does the vehicle exhibit stop-and-go behavior?"
+    answer_type: "binary"
+    choices: ["yes", "no"]
+    units: null
+
+    rule:
+      name: "stop_and_go_detection"
+      params:
+        stop_speed_threshold: 0.5  # m/s - PLACEHOLDER: speed below this counts as stopped
+        go_speed_threshold: 2.0    # m/s - PLACEHOLDER: speed above this counts as moving
+        min_stops: 1  # PLACEHOLDER: minimum number of stop-go cycles
+
+    metadata:
+      difficulty: "hard"
+      required_features: ["speed"]
+      description: "Tests detection of stop-and-go driving patterns"
+
+  # ===========================================================================
+  # Contrastive Sequence (First-Half vs Second-Half Dynamics)
+  # ===========================================================================
+  - question_id: "contrastive_sequence"
+    category: "comparative"
+    question_text: "Comparing the first and second halves of the sequence, which half has more dynamic driving?"
+    answer_type: "multiclass"
+    choices: ["first_half", "second_half", "similar"]
+    units: null
+
+    rule:
+      name: "half_comparison"
+      params:
+        feature: "accel"           # feature to compare across halves
+        aggregation: "rms"         # rms, mean_abs, max_abs, std
+        similarity_threshold: 0.2  # PLACEHOLDER: ratio difference below this → "similar"
+
+    metadata:
+      difficulty: "hard"
+      required_features: ["accel"]
+      temporal: true
+      description: "Tests ability to compare driving dynamics across temporal segments"
+
+# ===========================================================================
+# Notes for Researchers
+# ===========================================================================
+#
+# 1. THRESHOLDS: All threshold values marked as PLACEHOLDER should be adjusted
+#    based on:
+#    - nuScenes data distribution analysis
+#    - Driving comfort standards (ISO 2631, etc.)
+#    - Desired question difficulty and discrimination
+#
+# 2. AGGREGATION METHODS:
+#    - mean: Average value over clip
+#    - min/max: Extreme values
+#    - p50/p75/p95: Percentiles
+#    Choose based on what the question is testing
+#
+# 3. ADDING NEW QUESTIONS:
+#    - Use existing rule families when possible
+#    - Add new rules in labeling_rules.py if needed
+#    - Ensure question_id is unique
+#    - Test with small dataset first
+#
+# 4. PARAMETER TUNING WORKFLOW:
+#    a) Generate QA with initial thresholds
+#    b) Run validation to check answer distributions
+#    c) Analyze validation output for imbalanced labels
+#    d) Adjust thresholds iteratively
+#    e) Re-generate and validate
