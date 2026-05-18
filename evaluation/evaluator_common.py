@@ -833,10 +833,18 @@ def run_evaluation(args: argparse.Namespace, call_api: ApiCallFn) -> int:
     resolve_carla_video_dir(args)
 
     # --- validate paths ------------------------------------------------
-    nuscenes_root = Path(args.nuscenes_root)
-    if not args.no_images and not nuscenes_root.exists():
-        logger.error(f"nuScenes root not found: {nuscenes_root}")
-        return 1
+    nuscenes_root = Path(args.nuscenes_root) if args.nuscenes_root else None
+    if not args.no_images:
+        if nuscenes_root is None:
+            logger.error(
+                "--nuscenes_root is required when --no_images is not set "
+                "(image extraction needs the nuScenes root). "
+                "Pass --nuscenes_root /path/to/nuscenes or run with --no_images."
+            )
+            return 1
+        if not nuscenes_root.exists():
+            logger.error(f"nuScenes root not found: {nuscenes_root}")
+            return 1
 
     # --- load data -----------------------------------------------------
     clips = {}

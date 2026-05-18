@@ -64,8 +64,42 @@ conda env export --from-history > environment.yml
 
 ## Data sources
 
-EgoDyn-Bench combines two data sources. Both must be downloaded separately
-to your own machine; the released code only ships derived QA and arrays.
+EgoDyn-Bench data is split across two endpoints:
+
+| Source | What it holds | Where it lives |
+|---|---|---|
+| **Hugging Face dataset** (`fnc1901/EgoDyn-Bench`) | The benchmark spec, all derived artifacts: per-clip dynamics arrays, QA pairs, CARLA simulation + Cosmos-transferred videos, leaderboard | <https://huggingface.co/datasets/fnc1901/EgoDyn-Bench> |
+| **nuScenes (your local copy)** | Raw nuScenes imagery, joined via `sample_token` | <https://www.nuscenes.org/> (license-restricted, not redistributable) |
+
+### Downloading the benchmark from Hugging Face
+
+```bash
+# Install the CLI once
+pip install -U "huggingface_hub[cli]"
+
+# Pull everything (~3-5 GB; mostly the CARLA videos)
+hf download fnc1901/EgoDyn-Bench --repo-type=dataset --local-dir data/egodyn-bench
+```
+
+The resulting layout under `data/egodyn-bench/`:
+
+```
+data/egodyn-bench/
+├── selected_clips.json                       # The 1000-clip benchmark spec
+├── leaderboard.json                          # Reference results, all evaluated models
+├── nuscenes_clips/
+│   ├── clips_index.jsonl                     # 500 selected clip refs (sample_tokens)
+│   ├── arrays/clip_*.npz                     # Per-clip dynamics arrays
+│   └── qa.jsonl                              # Oracle QA pairs
+├── carla_clips/
+│   ├── clips_index.jsonl
+│   ├── arrays/*.npz
+│   └── qa.jsonl
+├── carla_videos_simulation/                  # Raw CARLA 3-second video clips
+│   └── <clip_id>.mp4                         # 500 clips × 1280x720
+└── carla_videos_transferred/                 # Cosmos-Transfer 2.5 photorealistic
+    └── <clip_id>.mp4                         # 500 clips × 1280x720
+```
 
 ### nuScenes
 
@@ -101,20 +135,22 @@ planner. Place the replay outputs at:
 Two patterns. Pick whichever is easier in your workflow:
 
 **1. Environment variables (recommended for repeated use).** Set these once
-in your shell profile and every script picks them up:
+in your shell profile and every script picks them up. The paths below match
+the Hugging Face download layout shown above:
 
 ```bash
-export EGODYN_NUSCENES_ROOT=/path/to/nuscenes
-export EGODYN_CARLA_LOGS_DIR=/path/to/carla/frenetix_logs
-export EGODYN_CARLA_VIDEO_DIR=/path/to/carla/video_frenetix_replay_physics
-export EGODYN_CARLA_TRANSFERRED_DIR=/path/to/carla/benchmark_transferred
+export EGODYN_NUSCENES_ROOT=/path/to/nuscenes                                      # your local nuScenes
+export EGODYN_CARLA_TRANSFERRED_DIR=./data/egodyn-bench/carla_videos_transferred   # from HF
+export EGODYN_CARLA_VIDEO_DIR=./data/egodyn-bench/carla_videos_simulation          # from HF
+# Optional — only needed for the from-scratch pipeline (Stage 1–3 in DATASET_GENERATION.md):
+# export EGODYN_CARLA_LOGS_DIR=/path/to/your/frenetix_logs
 ```
 
-| Variable | Used by |
-|---|---|
-| `EGODYN_CARLA_LOGS_DIR` | `scripts/plot_trajectories.py`, `scripts/prepare_carla_cosmos.sh` |
-| `EGODYN_CARLA_VIDEO_DIR` | `scripts/prepare_carla_cosmos.sh` |
-| `EGODYN_CARLA_TRANSFERRED_DIR` | `evaluation/evaluator_common.py`, `scripts/clip_viewer.py` |
+| Variable | Used by | Needed for |
+|---|---|---|
+| `EGODYN_CARLA_TRANSFERRED_DIR` | `evaluation/evaluator_common.py`, `scripts/clip_viewer.py` | Benchmark evaluation (the standard path) |
+| `EGODYN_CARLA_VIDEO_DIR` | `scripts/prepare_carla_cosmos.sh`, `scripts/chunk_carla_videos.py` | Raw-simulation visual domain (optional) |
+| `EGODYN_CARLA_LOGS_DIR` | `scripts/plot_trajectories.py`, `scripts/prepare_carla_cosmos.sh` | Only for rebuilding the benchmark from raw Frenetix logs |
 
 > The `EGODYN_NUSCENES_ROOT` variable is *not* currently read by the code —
 > nuScenes paths are passed via `--nuscenes_root` on the CLI. The variable

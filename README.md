@@ -33,11 +33,15 @@ The benchmark covers 14 question types across direct dynamics, comparative, and 
 # 1. Environment
 conda env create -f environment.yml && conda activate dynamics-benchmark
 
-# 2. Tell the harness where your data lives (one-off)
-export EGODYN_CARLA_TRANSFERRED_DIR=/path/to/carla/benchmark_transferred
-# nuScenes path is passed per-command via --nuscenes_root
+# 2. Download the benchmark data (~3-5 GB) from Hugging Face
+pip install -U "huggingface_hub[cli]"
+hf download fnc1901/EgoDyn-Bench --repo-type=dataset --local-dir data/egodyn-bench
 
-# 3. Run your model — example with a local Qwen3-VL via vLLM
+# 3. Tell the harness where the data lives (one-off; see docs/SETUP.md for all paths)
+export EGODYN_CARLA_TRANSFERRED_DIR=./data/egodyn-bench/carla_videos_transferred
+# nuScenes you download yourself from nuscenes.org — pass via --nuscenes_root per command
+
+# 4. Run your model — example with a local Qwen3-VL via vLLM
 python evaluation/evaluate_vllm_local.py \
     --selected_clips selected_clips.json \
     --nuscenes_root /path/to/nuscenes \
@@ -46,10 +50,10 @@ python evaluation/evaluate_vllm_local.py \
     --output generated/qwen3vl_8b_answers.jsonl \
     --metrics_output results/qwen3vl_8b.json --run_eval
 
-# 4. Or score an existing predictions JSONL standalone
+# 5. Or score an existing predictions JSONL standalone
 python scripts/evaluate.py --predictions generated/qwen3vl_8b_answers.jsonl
 
-# 5. Inspect failures interactively
+# 6. Inspect failures interactively
 jupyter lab analysis/notebooks/failure_analysis.ipynb
 ```
 
