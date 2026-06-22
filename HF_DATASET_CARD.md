@@ -51,6 +51,7 @@ EgoDyn-Bench enforces **trajectory dependency** in driving VQA: the same scene w
 EgoDyn-Bench/
 ├── selected_clips.json                       # The 1000-clip benchmark spec
 ├── leaderboard.json                          # 49-model reference leaderboard
+├── visual_artifact_subset.json               # 80-clip natural-ablation subset
 ├── nuscenes_clips/
 │   ├── clips_index.jsonl                     # Per-clip metadata + sample_tokens
 │   ├── arrays/clip_*.npz                     # 31-sample dynamics arrays
@@ -61,8 +62,10 @@ EgoDyn-Bench/
 │   └── qa.jsonl
 ├── carla_videos_simulation/                  # Raw CARLA Frenetix replays, 1280x720
 │   └── <clip_id>.mp4                         # 500 clips
-└── carla_videos_transferred/                 # Cosmos-Transfer 2.5 sim-to-real
-    └── <clip_id>.mp4                         # 500 clips, paired with simulation
+├── carla_videos_transferred/                 # Cosmos-Transfer 2.5 sim-to-real
+│   └── <clip_id>.mp4                         # 500 clips, paired with simulation
+└── generated/                                # Reference model outputs (49 JSONLs)
+    └── <model>_answers.jsonl                 # Raw answers from every leaderboard model
 ```
 
 ### File schemas
@@ -118,11 +121,16 @@ cd EgoDyn-Bench
 # 3. Set up environment
 conda env create -f environment.yml && conda activate dynamics-benchmark
 
-# 4. Point the harness at the downloaded data
+# 4. Wire the HF download into the harness's expected paths
 export EGODYN_CARLA_TRANSFERRED_DIR=$(pwd)/../data/egodyn-bench/carla_videos_transferred
 cp ../data/egodyn-bench/selected_clips.json .
-mkdir -p output && ln -s ../data/egodyn-bench/nuscenes_clips output/nuscenes_clips
-ln -s ../data/egodyn-bench/carla_clips output/carla_clips
+mkdir -p output generated
+ln -sfn ../data/egodyn-bench/nuscenes_clips output/nuscenes_clips
+ln -sfn ../data/egodyn-bench/carla_clips    output/carla_clips
+# Symlink the 49 reference model outputs so failure_analysis.ipynb works out of the box:
+for f in ../data/egodyn-bench/generated/*.jsonl; do
+    ln -sfn "$f" "generated/$(basename "$f")"
+done
 
 # 5. Download nuScenes separately (required for vision-only evaluation)
 #    https://www.nuscenes.org/ — v1.0-trainval
