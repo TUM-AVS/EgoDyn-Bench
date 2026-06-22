@@ -1,0 +1,168 @@
+{
+  "n_total": 1,
+  "n_parsed": 1,
+  "parsable_coverage": 1.0,
+  "global": {
+    "accuracy": 1.0,
+    "balanced_acc": 1.0,
+    "macro_f1": 1.0,
+    "n": 1
+  },
+  "temporal": {
+    "accuracy": 0.0,
+    "balanced_acc": 0.0,
+    "macro_f1": 0.0,
+    "n": 0
+  },
+  "per_category": {
+    "direct_dynamics": {
+      "accuracy": 1.0,
+      "balanced_acc": 1.0,
+      "macro_f1": 1.0,
+      "n": 1
+    }
+  },
+  "per_question": {
+    "yaw_rate_turn_direction": {
+      "accuracy": 1.0,
+      "balanced_acc": 1.0,
+      "macro_f1": 0.3333,
+      "n": 1,
+      "confusion_matrix": {
+        "labels": [
+          "left",
+          "right",
+          "straight"
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    }
+  },
+  "consistency": {
+    "rate": 0.0,
+    "n_clips": 1,
+    "n_evaluable": 0,
+    "n_consistent": 0,
+    "consistency_coverage": 0.0,
+    "mean_violations": 0.0,
+    "per_rule": {
+      "emergency_brake_not_accelerating": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "emergency_brake_implies_extreme_maneuver": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "moderate_brake_not_accelerating": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "heading_change_implies_turning": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "lateral_accel_implies_turning": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "highway_implies_not_low_speed": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "stopped_implies_low_speed": {
+        "n_applicable": 0,
+        "n_violations": 0,
+        "compliance": 1.0
+      }
+    }
+  },
+  "per_source": {
+    "nuscenes": {
+      "accuracy": 1.0,
+      "balanced_acc": 1.0,
+      "macro_f1": 1.0,
+      "n": 1,
+      "consistency": {
+        "rate": 0.0,
+        "n_clips": 1,
+        "n_evaluable": 0,
+        "n_consistent": 0,
+        "consistency_coverage": 0.0,
+        "mean_violations": 0.0,
+        "per_rule": {
+          "emergency_brake_not_accelerating": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "emergency_brake_implies_extreme_maneuver": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "moderate_brake_not_accelerating": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "heading_change_implies_turning": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "lateral_accel_implies_turning": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "highway_implies_not_low_speed": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "stopped_implies_low_speed": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          }
+        }
+      }
+    }
+  },
+  "inference_timing": {
+    "n_requests": 1,
+    "total_inference_s": 8.24,
+    "wall_clock_s": 8.24,
+    "mean_latency_s": 8.237,
+    "median_latency_s": 8.237,
+    "p95_latency_s": 8.237,
+    "min_latency_s": 8.237,
+    "max_latency_s": 8.237,
+    "throughput_req_per_s": 0.121,
+    "mean_images_per_request": 10.0,
+    "gpu": "NVIDIA GeForce RTX 5090"
+  }
+}

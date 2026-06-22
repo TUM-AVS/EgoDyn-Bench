@@ -1,0 +1,646 @@
+{
+  "n_total": 14000,
+  "n_parsed": 14000,
+  "parsable_coverage": 1.0,
+  "global": {
+    "accuracy": 0.6426,
+    "balanced_acc": 0.565,
+    "macro_f1": 0.5403,
+    "n": 14000
+  },
+  "temporal": {
+    "accuracy": 0.5168,
+    "balanced_acc": 0.528,
+    "macro_f1": 0.5108,
+    "n": 4000
+  },
+  "per_category": {
+    "comparative": {
+      "accuracy": 0.455,
+      "balanced_acc": 0.5155,
+      "macro_f1": 0.4908,
+      "n": 2000
+    },
+    "direct_dynamics": {
+      "accuracy": 0.6738,
+      "balanced_acc": 0.5749,
+      "macro_f1": 0.5502,
+      "n": 12000
+    }
+  },
+  "per_question": {
+    "brake_then_turn": {
+      "accuracy": 0.743,
+      "balanced_acc": 0.7253,
+      "macro_f1": 0.7206,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            230,
+            114
+          ],
+          [
+            143,
+            513
+          ]
+        ]
+      }
+    },
+    "braking_intensity": {
+      "accuracy": 0.425,
+      "balanced_acc": 0.4293,
+      "macro_f1": 0.3213,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "emergency",
+          "moderate",
+          "low",
+          "none"
+        ],
+        "matrix": [
+          [
+            0,
+            42,
+            286,
+            17
+          ],
+          [
+            0,
+            7,
+            124,
+            9
+          ],
+          [
+            0,
+            2,
+            179,
+            13
+          ],
+          [
+            0,
+            1,
+            81,
+            239
+          ]
+        ]
+      }
+    },
+    "contrastive_sequence": {
+      "accuracy": 0.398,
+      "balanced_acc": 0.3981,
+      "macro_f1": 0.3541,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "first_half",
+          "second_half",
+          "similar"
+        ],
+        "matrix": [
+          [
+            87,
+            61,
+            186
+          ],
+          [
+            82,
+            50,
+            201
+          ],
+          [
+            43,
+            29,
+            261
+          ]
+        ]
+      }
+    },
+    "dominant_motion_axis": {
+      "accuracy": 0.608,
+      "balanced_acc": 0.5129,
+      "macro_f1": 0.5263,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "longitudinal",
+          "lateral",
+          "none"
+        ],
+        "matrix": [
+          [
+            444,
+            70,
+            0
+          ],
+          [
+            151,
+            92,
+            0
+          ],
+          [
+            104,
+            67,
+            72
+          ]
+        ]
+      }
+    },
+    "driving_smoothness": {
+      "accuracy": 0.576,
+      "balanced_acc": 0.6362,
+      "macro_f1": 0.5792,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "smooth",
+          "moderate",
+          "aggressive"
+        ],
+        "matrix": [
+          [
+            210,
+            78,
+            0
+          ],
+          [
+            0,
+            284,
+            4
+          ],
+          [
+            0,
+            342,
+            82
+          ]
+        ]
+      }
+    },
+    "extreme_maneuver": {
+      "accuracy": 0.876,
+      "balanced_acc": 0.8857,
+      "macro_f1": 0.8644,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            292,
+            28
+          ],
+          [
+            96,
+            584
+          ]
+        ]
+      }
+    },
+    "high_lateral_accel": {
+      "accuracy": 0.933,
+      "balanced_acc": 0.911,
+      "macro_f1": 0.9251,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            304,
+            63
+          ],
+          [
+            4,
+            629
+          ]
+        ]
+      }
+    },
+    "mean_speed_low": {
+      "accuracy": 0.968,
+      "balanced_acc": 0.9647,
+      "macro_f1": 0.9675,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            547,
+            0
+          ],
+          [
+            32,
+            421
+          ]
+        ]
+      }
+    },
+    "significant_heading_change": {
+      "accuracy": 0.621,
+      "balanced_acc": 0.5819,
+      "macro_f1": 0.513,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            75,
+            378
+          ],
+          [
+            1,
+            546
+          ]
+        ]
+      }
+    },
+    "speed_peak_half": {
+      "accuracy": 0.512,
+      "balanced_acc": 0.5089,
+      "macro_f1": 0.4876,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "first_half",
+          "second_half",
+          "no_peak"
+        ],
+        "matrix": [
+          [
+            41,
+            305,
+            2
+          ],
+          [
+            55,
+            309,
+            10
+          ],
+          [
+            14,
+            102,
+            162
+          ]
+        ]
+      }
+    },
+    "speed_regime": {
+      "accuracy": 0.662,
+      "balanced_acc": 0.6219,
+      "macro_f1": 0.6304,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "stopped",
+          "slow",
+          "urban",
+          "highway"
+        ],
+        "matrix": [
+          [
+            151,
+            43,
+            10,
+            0
+          ],
+          [
+            0,
+            313,
+            6,
+            0
+          ],
+          [
+            0,
+            141,
+            153,
+            0
+          ],
+          [
+            0,
+            0,
+            138,
+            45
+          ]
+        ]
+      }
+    },
+    "speed_trend": {
+      "accuracy": 0.414,
+      "balanced_acc": 0.4131,
+      "macro_f1": 0.3976,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "accelerating",
+          "decelerating",
+          "steady"
+        ],
+        "matrix": [
+          [
+            17,
+            252,
+            63
+          ],
+          [
+            160,
+            165,
+            8
+          ],
+          [
+            34,
+            69,
+            232
+          ]
+        ]
+      }
+    },
+    "stop_and_go": {
+      "accuracy": 0.625,
+      "balanced_acc": 0.6688,
+      "macro_f1": 0.6196,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "yes",
+          "no"
+        ],
+        "matrix": [
+          [
+            253,
+            67
+          ],
+          [
+            308,
+            372
+          ]
+        ]
+      }
+    },
+    "yaw_rate_turn_direction": {
+      "accuracy": 0.635,
+      "balanced_acc": 0.6297,
+      "macro_f1": 0.6164,
+      "n": 1000,
+      "confusion_matrix": {
+        "labels": [
+          "left",
+          "right",
+          "straight"
+        ],
+        "matrix": [
+          [
+            127,
+            41,
+            160
+          ],
+          [
+            32,
+            177,
+            119
+          ],
+          [
+            5,
+            8,
+            331
+          ]
+        ]
+      }
+    }
+  },
+  "consistency": {
+    "rate": 0.7141,
+    "wemcr": 0.7141,
+    "mean_compliance": 0.9016,
+    "rule_coverage": 1.0,
+    "n_rules_triggered": 10,
+    "n_rules_total": 10,
+    "n_clips": 1000,
+    "n_evaluable": 976,
+    "n_consistent": 697,
+    "consistency_coverage": 0.976,
+    "mean_violations": 0.4283,
+    "per_rule": {
+      "heading_change_implies_turning": {
+        "n_applicable": 76,
+        "n_violations": 7,
+        "compliance": 0.9079
+      },
+      "lateral_accel_implies_turning": {
+        "n_applicable": 308,
+        "n_violations": 92,
+        "compliance": 0.7013
+      },
+      "straight_implies_no_heading_change": {
+        "n_applicable": 610,
+        "n_violations": 7,
+        "compliance": 0.9885
+      },
+      "straight_implies_no_high_lateral_accel": {
+        "n_applicable": 610,
+        "n_violations": 92,
+        "compliance": 0.8492
+      },
+      "highway_implies_not_low_speed": {
+        "n_applicable": 45,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "stopped_implies_low_speed": {
+        "n_applicable": 151,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "stopped_not_accelerating": {
+        "n_applicable": 151,
+        "n_violations": 0,
+        "compliance": 1.0
+      },
+      "brake_then_turn_implies_braking": {
+        "n_applicable": 373,
+        "n_violations": 15,
+        "compliance": 0.9598
+      },
+      "brake_then_turn_implies_turning": {
+        "n_applicable": 373,
+        "n_violations": 78,
+        "compliance": 0.7909
+      },
+      "stop_and_go_not_stopped": {
+        "n_applicable": 561,
+        "n_violations": 127,
+        "compliance": 0.7736
+      }
+    }
+  },
+  "per_source": {
+    "carla": {
+      "accuracy": 0.6153,
+      "balanced_acc": 0.5711,
+      "macro_f1": 0.5171,
+      "n": 7000,
+      "consistency": {
+        "rate": 0.6074,
+        "wemcr": 0.6074,
+        "mean_compliance": 0.8458,
+        "rule_coverage": 1.0,
+        "n_rules_triggered": 10,
+        "n_rules_total": 10,
+        "n_clips": 500,
+        "n_evaluable": 489,
+        "n_consistent": 297,
+        "consistency_coverage": 0.978,
+        "mean_violations": 0.6728,
+        "per_rule": {
+          "heading_change_implies_turning": {
+            "n_applicable": 65,
+            "n_violations": 7,
+            "compliance": 0.8923
+          },
+          "lateral_accel_implies_turning": {
+            "n_applicable": 287,
+            "n_violations": 92,
+            "compliance": 0.6794
+          },
+          "straight_implies_no_heading_change": {
+            "n_applicable": 272,
+            "n_violations": 7,
+            "compliance": 0.9743
+          },
+          "straight_implies_no_high_lateral_accel": {
+            "n_applicable": 272,
+            "n_violations": 92,
+            "compliance": 0.6618
+          },
+          "highway_implies_not_low_speed": {
+            "n_applicable": 45,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "stopped_implies_low_speed": {
+            "n_applicable": 99,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "stopped_not_accelerating": {
+            "n_applicable": 99,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "brake_then_turn_implies_braking": {
+            "n_applicable": 206,
+            "n_violations": 5,
+            "compliance": 0.9757
+          },
+          "brake_then_turn_implies_turning": {
+            "n_applicable": 206,
+            "n_violations": 35,
+            "compliance": 0.8301
+          },
+          "stop_and_go_not_stopped": {
+            "n_applicable": 232,
+            "n_violations": 91,
+            "compliance": 0.6078
+          }
+        }
+      }
+    },
+    "nuscenes": {
+      "accuracy": 0.6699,
+      "balanced_acc": 0.5698,
+      "macro_f1": 0.5353,
+      "n": 7000,
+      "consistency": {
+        "rate": 0.8214,
+        "wemcr": 0.7393,
+        "mean_compliance": 0.9576,
+        "rule_coverage": 0.9,
+        "n_rules_triggered": 9,
+        "n_rules_total": 10,
+        "n_clips": 500,
+        "n_evaluable": 487,
+        "n_consistent": 400,
+        "consistency_coverage": 0.974,
+        "mean_violations": 0.1828,
+        "per_rule": {
+          "heading_change_implies_turning": {
+            "n_applicable": 11,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "lateral_accel_implies_turning": {
+            "n_applicable": 21,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "straight_implies_no_heading_change": {
+            "n_applicable": 338,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "straight_implies_no_high_lateral_accel": {
+            "n_applicable": 338,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "highway_implies_not_low_speed": {
+            "n_applicable": 0,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "stopped_implies_low_speed": {
+            "n_applicable": 52,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "stopped_not_accelerating": {
+            "n_applicable": 52,
+            "n_violations": 0,
+            "compliance": 1.0
+          },
+          "brake_then_turn_implies_braking": {
+            "n_applicable": 167,
+            "n_violations": 10,
+            "compliance": 0.9401
+          },
+          "brake_then_turn_implies_turning": {
+            "n_applicable": 167,
+            "n_violations": 43,
+            "compliance": 0.7425
+          },
+          "stop_and_go_not_stopped": {
+            "n_applicable": 329,
+            "n_violations": 36,
+            "compliance": 0.8906
+          }
+        }
+      }
+    }
+  },
+  "inference_timing": {
+    "n_requests": 14000,
+    "total_inference_s": 21246.02,
+    "wall_clock_s": 28990.68,
+    "mean_latency_s": 1.518,
+    "median_latency_s": 1.432,
+    "p95_latency_s": 2.69,
+    "min_latency_s": 1.382,
+    "max_latency_s": 7.774,
+    "throughput_req_per_s": 0.483,
+    "mean_images_per_request": 10.0
+  }
+}
