@@ -164,6 +164,28 @@ print(arrays["speed"].shape)  # (31,) — 3 s @ 10 Hz
 
 ---
 
+## Natural Visual-Artifact Subset
+
+80 of the 500 CARLA-transferred clips (16%) carry visible spatial artifacts inherited 
+from upstream CARLA rendering — missing thin geometry, lighting glitches, melted 
+textures. Because these artifacts are temporally stable within each 3-second window, 
+the optical-flow signal driving the dynamics oracle is preserved while photometric 
+quality is severely degraded.
+
+**This subset functions as an unintended natural ablation for the paper's central 
+"perception bottleneck" finding.** If models were genuinely vision-grounded, accuracy 
+should drop noticeably on these 80 clips relative to the other 420. It does not: 
+per-clip accuracy differs by at most 3 pp across six representative leaderboard 
+models, with mixed direction — additional independent evidence that models do not 
+meaningfully exploit photometric quality for ego-motion reasoning (Sec. 5.3 of the 
+paper).
+
+All 500 clips remain part of the benchmark for leaderboard consistency. The flagged 
+subset is provided in `visual_artifact_subset.json` for downstream studies — e.g., 
+fine-grained perception-quality ablations or visual robustness work.
+
+---
+
 ## Determinism guarantees
 
 - **Curation of `selected_clips.json` is a one-time decision** — the released file is the canonical artifact. The selection algorithm in the GitHub repo is provided for transparency, not as a bit-exact reproducer. (This matches how nuScenes, KITTI, BDD100K, DriveLM, etc. ship.)
