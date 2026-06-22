@@ -196,10 +196,10 @@ fine-grained perception-quality ablations or visual robustness work.
 ## Citation
 
 ```bibtex
-@inproceedings{egodyn-bench-2026,
-  title={Why Vision-Language Models Fail at Dynamics Reasoning: A Benchmark},
-  author={Finn Rasmus Sch{\"a}fer and Yuan Gao and Dingrui Wang and Roberto Brusnicki and Mattia Piccinini and Sebastian Schmidt and Johannes Betz},
-  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+@inproceedings{schaefer2026egodyn,
+  title={EgoDyn-Bench: Evaluating Ego-Motion Understanding in Vision-Centric Foundation Models for Autonomous Driving},
+  author={Sch{\"a}fer, Finn Rasmus and Gao, Yuan and Wang, Dingrui and Stauner, Thomas and G{\"u}nnemann, Stephan and Piccinini, Mattia and Schmidt, Sebastian and Betz, Johannes},
+  booktitle={European Conference on Computer Vision (ECCV)},
   year={2026}
 }
 ```
