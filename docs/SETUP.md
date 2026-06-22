@@ -77,7 +77,7 @@ EgoDyn-Bench data is split across two endpoints:
 # Install the CLI once
 pip install -U "huggingface_hub[cli]"
 
-# Pull everything (~3-5 GB; mostly the CARLA videos)
+# Pull everything (~1.5 GB; mostly the CARLA videos)
 hf download fnc1901/EgoDyn-Bench --repo-type=dataset --local-dir data/egodyn-bench
 ```
 
@@ -86,7 +86,8 @@ The resulting layout under `data/egodyn-bench/`:
 ```
 data/egodyn-bench/
 ├── selected_clips.json                       # The 1000-clip benchmark spec
-├── leaderboard.json                          # Reference results, all evaluated models
+├── leaderboard.json                          # Reference results, all 49 evaluated models
+├── visual_artifact_subset.json               # 80-clip natural-ablation subset list
 ├── nuscenes_clips/
 │   ├── clips_index.jsonl                     # 500 selected clip refs (sample_tokens)
 │   ├── arrays/clip_*.npz                     # Per-clip dynamics arrays
@@ -97,9 +98,13 @@ data/egodyn-bench/
 │   └── qa.jsonl
 ├── carla_videos_simulation/                  # Raw CARLA 3-second video clips
 │   └── <clip_id>.mp4                         # 500 clips × 1280x720
-└── carla_videos_transferred/                 # Cosmos-Transfer 2.5 photorealistic
-    └── <clip_id>.mp4                         # 500 clips × 1280x720
+├── carla_videos_transferred/                 # Cosmos-Transfer 2.5 photorealistic
+│   └── <clip_id>.mp4                         # 500 clips × 1280x720
+└── generated/                                # Reference model outputs (49 JSONLs)
+    └── <model>_answers.jsonl                 # Raw answers from every leaderboard model
 ```
+
+The `generated/` directory ships the raw model answers underlying every entry in `leaderboard.json` — so the failure-analysis notebook and `scripts/evaluate.py` work out of the box, without re-running inference. Per-model summary metrics (`results/<model>.json`) ship in the GitHub repo at [`results/`](../results/).
 
 ### nuScenes
 
