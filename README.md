@@ -2,8 +2,14 @@
 
 **A physics-grounded VQA benchmark for evaluating Vision-Language Models on trajectory-based dynamics reasoning in autonomous driving.**
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2604.22851-b31b1b.svg)](https://arxiv.org/abs/2604.22851)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97_Dataset-EgoDyn--Bench-yellow.svg)](https://huggingface.co/datasets/fnc1901/EgoDyn-Bench)
+[![Project Page](https://img.shields.io/badge/Project-Website-1f6feb.svg)](https://tum-avs.github.io/EgoDyn-Bench-Website/)
+[![Code License](https://img.shields.io/badge/Code-Apache_2.0-green.svg)](LICENSE)
+[![Data License](https://img.shields.io/badge/Data-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+
+📄 **Accepted at ECCV 2026.** &nbsp; **Resources:** [Paper (arXiv)](https://arxiv.org/abs/2604.22851) · [Dataset (🤗 Hugging Face)](https://huggingface.co/datasets/fnc1901/EgoDyn-Bench) · [Project Page & Leaderboard](https://tum-avs.github.io/EgoDyn-Bench-Website/) · [Code](https://github.com/TUM-AVS/EgoDyn-Bench)
 
 ---
 
@@ -169,6 +175,15 @@ python scripts/build_leaderboard.py
 
 This reads every `*.jsonl` in `generated/`, runs the full evaluation pipeline (parsing + metrics + consistency), and writes `leaderboard/results.json`.
 
+### Submit to the leaderboard
+
+1. Produce a predictions JSONL with one record per QA pair — `{"clip_id": ..., "question_id": ..., "model_answer": "<free text or label>"}`. Every provided evaluator writes this format automatically; the harness joins the oracle labels from `selected_clips.json`.
+2. Score it standalone:
+   ```bash
+   python scripts/evaluate.py --predictions generated/<your_model>_answers.jsonl
+   ```
+3. To appear on the public [leaderboard](https://tum-avs.github.io/EgoDyn-Bench-Website/), open a PR adding your `generated/<your_model>_answers.jsonl` plus a one-line model description, or contact <finn.schaefer@tum.de>. Full submission flow: [docs/EVALUATION.md → Submitting your model](docs/EVALUATION.md#submitting-your-model-to-the-leaderboard).
+
 ---
 
 ## Metrics
@@ -180,6 +195,28 @@ This reads every `*.jsonl` in `generated/`, runs the full evaluation pipeline (p
 | WPCR | Per-clip | Weighted Physics Consistency Rate -- fraction of clips with zero kinematic contradictions, weighted by rule coverage |
 | Confusion Matrix | Per-question | Full label-vs-label counts |
 | Parsable Coverage | Global | Fraction of model answers successfully parsed |
+
+---
+
+## Reproducing the Paper
+
+All numbers and figures in the paper are regenerated from the released artifacts (the `generated/*.jsonl` reference outputs on Hugging Face + `selected_clips.json`). Each row below maps a paper item to the script that produces it.
+
+| Paper item | Script / source | Output |
+|---|---|---|
+| Tables 3, 4, 7, 8, 9 (all model metrics: vision-only, vision+trajectory, parsability, encoding & temporal-resolution ablations) | `scripts/build_leaderboard.py` (over `generated/*.jsonl`) | `leaderboard/results.json` |
+| Table 5 (domain gap: real / sim / transferred) | `scripts/build_leaderboard.py` (per-source fields; `*_simulation` / `*_transferred` runs) | `leaderboard/results.json` |
+| Table 6 (question bank & answer options) | `dataset/configs/questions_template.yaml` | — |
+| Fig. 2a (trajectory overlay) | `scripts/plot_trajectories.py` | `assets/figures/trajectories_overlay.*` |
+| Fig. 2b (label balance / augmentation effect) | `scripts/visualize_distributions.py` | `assets/figures/balance_comparison.*` |
+| Figs. 3–4 (global threshold sensitivity: ranking & WPCR stability) | `scripts/threshold_sensitivity.py` | `assets/figures/sensitivity/threshold_sensitivity*.*` |
+| Per-question sensitivity (Appx. C.1) | `scripts/per_threshold_sensitivity.py` | `assets/figures/sensitivity/per_threshold_*.*` |
+| §A.1 / Alg. 1 (greedy 1,000-clip selection) | `scripts/select_balanced_clips.py` | `selected_clips.json` |
+| §A.2 (threshold calibration) | `dataset/scripts/calibrate_thresholds.py` | `docs/threshold_calibration_report.md` |
+| LaTeX figure data (TikZ/pgfplots) | `scripts/export_tikz_data.py` | `assets/tikz_data/*.csv` |
+| Bootstrap 95% CIs | `scripts/bootstrap_confidence.py` | LaTeX table (stdout) |
+
+All randomized steps use a fixed seed (`42`). See [docs/EVALUATION.md](docs/EVALUATION.md) and [docs/DATASET_GENERATION.md](docs/DATASET_GENERATION.md) for the full command lines.
 
 ---
 
@@ -368,13 +405,36 @@ egodyn-bench/
 
 ```bibtex
 @inproceedings{schaefer2026egodyn,
-  title={EgoDyn-Bench: Evaluating Ego-Motion Understanding in Vision-Centric Foundation Models for Autonomous Driving},
-  author={Sch{\"a}fer, Finn Rasmus and Gao, Yuan and Wang, Dingrui and Stauner, Thomas and G{\"u}nnemann, Stephan and Piccinini, Mattia and Schmidt, Sebastian and Betz, Johannes},
-  booktitle={European Conference on Computer Vision (ECCV)},
-  year={2026}
+  title         = {EgoDyn-Bench: Evaluating Ego-Motion Understanding in Vision-Centric Foundation Models for Autonomous Driving},
+  author        = {Sch{\"a}fer, Finn Rasmus and Gao, Yuan and Wang, Dingrui and Stauner, Thomas and G{\"u}nnemann, Stephan and Piccinini, Mattia and Schmidt, Sebastian and Betz, Johannes},
+  booktitle     = {European Conference on Computer Vision (ECCV)},
+  year          = {2026},
+  eprint        = {2604.22851},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
 }
 ```
 
-## License
+Please also cite [nuScenes](https://www.nuscenes.org/) and [CARLA](https://carla.org/), the upstream data sources.
 
-Apache 2.0 -- see [LICENSE](LICENSE).
+## License & Attribution
+
+This release is **dual-licensed**:
+
+- **Code** (evaluation harness, baselines, dataset-generation and tooling scripts): [Apache 2.0](LICENSE).
+- **Dataset & derived artifacts** (oracle QA, per-clip dynamics arrays, CARLA/Cosmos frames, leaderboard outputs, `selected_clips.json`): [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), chosen to comply with nuScenes' upstream terms.
+
+> **Raw nuScenes imagery is not redistributed.** Obtain it from <https://www.nuscenes.org/> under its own license and join via the provided `sample_token` references.
+
+### Third-party assets
+
+EgoDyn-Bench builds on the works below; honor each upstream license when redistributing.
+
+| Asset | Use in EgoDyn-Bench | License |
+|---|---|---|
+| [nuScenes](https://www.nuscenes.org/) | Real-world sequences (sample tokens only) | CC BY-NC-SA 4.0 |
+| [CARLA](https://carla.org/) | Simulated driving sequences | MIT |
+| [Frenetix](https://github.com/TUM-AVS/Frenetix) | Motion planner generating the CARLA trajectories | see upstream repo |
+| [NVIDIA Cosmos Transfer](https://github.com/NVIDIA/Cosmos) | Photometric style transfer of CARLA frames | NVIDIA Open Model License (verify upstream) |
+| [RAFT](https://github.com/princeton-vl/RAFT) | Learned optical-flow baseline | BSD-3-Clause |
+| [TartanVO](https://github.com/castacks/tartanvo) | Learned visual-odometry baseline | see upstream repo |

@@ -1,0 +1,66 @@
+cff-version: 1.2.0
+title: "EgoDyn-Bench: Evaluating Ego-Motion Understanding in Vision-Centric Foundation Models for Autonomous Driving"
+message: "If you use EgoDyn-Bench, please cite the paper below (and the upstream nuScenes and CARLA datasets)."
+type: dataset
+authors:
+  - family-names: "Schäfer"
+    given-names: "Finn Rasmus"
+    affiliation: "Technical University of Munich"
+    email: "finn.schaefer@tum.de"
+  - family-names: "Gao"
+    given-names: "Yuan"
+    affiliation: "Technical University of Munich"
+  - family-names: "Wang"
+    given-names: "Dingrui"
+    affiliation: "Technical University of Munich"
+  - family-names: "Stauner"
+    given-names: "Thomas"
+    affiliation: "Bayerische Motoren Werke AG"
+  - family-names: "Günnemann"
+    given-names: "Stephan"
+    affiliation: "Technical University of Munich"
+  - family-names: "Piccinini"
+    given-names: "Mattia"
+    affiliation: "Technical University of Munich"
+  - family-names: "Schmidt"
+    given-names: "Sebastian"
+    affiliation: "Bayerische Motoren Werke AG / Technical University of Munich"
+  - family-names: "Betz"
+    given-names: "Johannes"
+    affiliation: "Technical University of Munich"
+repository-code: "https://github.com/TUM-AVS/EgoDyn-Bench"
+url: "https://tum-avs.github.io/EgoDyn-Bench-Website/"
+license: Apache-2.0
+keywords:
+  - ego-motion
+  - physical reasoning
+  - vision-language models
+  - autonomous driving
+  - benchmark
+  - video question answering
+identifiers:
+  - type: other
+    value: "arXiv:2604.22851"
+    description: "arXiv preprint"
+preferred-citation:
+  type: conference-paper
+  title: "EgoDyn-Bench: Evaluating Ego-Motion Understanding in Vision-Centric Foundation Models for Autonomous Driving"
+  authors:
+    - family-names: "Schäfer"
+      given-names: "Finn Rasmus"
+    - family-names: "Gao"
+      given-names: "Yuan"
+    - family-names: "Wang"
+      given-names: "Dingrui"
+    - family-names: "Stauner"
+      given-names: "Thomas"
+    - family-names: "Günnemann"
+      given-names: "Stephan"
+    - family-names: "Piccinini"
+      given-names: "Mattia"
+    - family-names: "Schmidt"
+      given-names: "Sebastian"
+    - family-names: "Betz"
+      given-names: "Johannes"
+  collection-title: "European Conference on Computer Vision (ECCV)"
+  year: 2026
